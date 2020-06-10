@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-roter-dom';
+import { NavLink } from 'react-router-dom';
 
 const SignOutLinks = () => (
   <>
