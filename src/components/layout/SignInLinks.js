@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 
 const SignInLinks = () => (
   <>
-    <NavLink to="/projects/create">Create Project</NavLink>
-    <NavLink to="/signout">Sign Out</NavLink>
-    <NavLink to="/">HU</NavLink>
+    <li><NavLink to="/projects/create">Create Project</NavLink></li>
+    <li><NavLink to="/signout">Sign Out</NavLink></li>
+    <li><NavLink to="/">HU</NavLink></li>
   </>
 );
 
