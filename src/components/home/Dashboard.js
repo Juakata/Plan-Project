@@ -1,10 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ProjectList from '../projects/ProjectList';
 
-const Dashboard = () => (
+const Dashboard = ({ projects }) => (
   <div>
-    <ProjectList />
+    <ProjectList projects={projects}/>
   </div>
 );
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  projects: state.project.projects,
+});
+
+export default connect(mapStateToProps)(Dashboard);
