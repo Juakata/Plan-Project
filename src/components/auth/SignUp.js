@@ -86,7 +86,7 @@ class SignUp extends React.Component {
                 onChange={this.handleChange}
                 value={repeat}
               />
-              <label htmlFor="repeat">Password</label>
+              <label htmlFor="repeat">Repeat Password</label>
             </div>
           </div>
           <button type="submit" className="waves-effect waves-light btn">Create</button>
