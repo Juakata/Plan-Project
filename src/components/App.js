@@ -6,6 +6,7 @@ import SignIn from './auth/SignIn';
 import SignOut from './auth/SignOut';
 import SignUp from './auth/SignUp';
 import CreateProject from './projects/CreateProject';
+import ProjectDetail from './projects/ProjectDetail';
 
 const App = () => (
   <BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => (
         <Route exact path="/signout" component={SignOut} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/projects/create" component={CreateProject} />
+        <Route exact path="/projects/:id" component={ProjectDetail} />
       </Switch>
     </div>
   </BrowserRouter>
