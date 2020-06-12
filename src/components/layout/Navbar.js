@@ -4,8 +4,8 @@ import SignInLinks from './SignInLinks';
 import SignOutLinks from './SignOutLinks';
 
 const Navbar = () => (
-  <nav className="nav-top">
-    <div className="nav-wrapper">
+  <nav className="nav-top nav-wrapper grey darken-3">
+    <div className="container">
       <NavLink to="/" className="brand-logo">Plan Project</NavLink>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <SignInLinks />
