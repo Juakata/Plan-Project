@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createProject } from '../../actions';
 
 class CreateProject extends React.Component {
   constructor(props) {
@@ -16,7 +18,8 @@ class CreateProject extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    const { createProject } = this.props;
+    createProject(this.state);
   }
 
   render() {
@@ -55,4 +58,4 @@ class CreateProject extends React.Component {
   };
 }
 
-export default CreateProject;
+export default connect(null, { createProject })(CreateProject);
