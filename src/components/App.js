@@ -10,13 +10,15 @@ import CreateProject from './projects/CreateProject';
 const App = () => (
   <BrowserRouter>
     <Navbar />
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/signin" component={SignIn} />
-      <Route exact path="/signout" component={SignOut} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/projects/create" component={CreateProject} />
-    </Switch>
+    <div className="container">
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signout" component={SignOut} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/projects/create" component={CreateProject} />
+      </Switch>
+    </div>
   </BrowserRouter>
 );
 
