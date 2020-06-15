@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -16,11 +18,14 @@ class SignIn extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    const { signIn } = this.props;
+    signIn(this.state);
   }
 
   render() {
     const { email, password } = this.state;
+    const { authError } = this.props;
+    console.log(authError);
     return (
       <div className="row">
         <form className="col s12" onSubmit={this.handleSubmit}>
@@ -48,11 +53,20 @@ class SignIn extends React.Component {
               <label htmlFor="password">Password</label>
             </div>
           </div>
-          <button type="submit" className="waves-effect waves-light btn">Create</button>
+          <div className="red-text center">
+            { authError ? <p>{authError}</p> : null }
+          </div>
+          <button type="submit" className="waves-effect waves-light btn">
+            Sign In
+          </button>
         </form>
       </div>
     );
   };
 }
 
-export default SignIn;
+const mapStateToProps = state => ({
+  authError: state.auth.authError,
+})
+
+export default connect(mapStateToProps, { signIn })(SignIn);
