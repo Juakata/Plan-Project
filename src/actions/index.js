@@ -19,3 +19,9 @@ export const signIn = credentials => (dispatch, getState, { getFirebase }) => {
   .then(() => dispatch({ type: 'LOGIN_SUCCESS' }))
   .catch( err => dispatch({ type: 'LOGIN_ERROR', err }));
 }
+
+export const signOut = () => (dispatch, getState, { getFirebase }) => {
+  getFirebase().auth().signOut()
+  .then(() => dispatch({ type: 'SIGNOUT_SUCCESS' }))
+  .catch(err => dispatch( { type: 'SIGNOUT_ERROR', err }));
+}
