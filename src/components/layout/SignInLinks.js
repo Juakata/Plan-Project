@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut } from '../../actions';
 
-const SignInLinks = ({ signOut }) => (
+const SignInLinks = ({ signOut, profile }) => (
   <>
     <li><NavLink to="/projects/create">Create Project</NavLink></li>
     <li><a onClick={signOut}>Sign Out</a></li>
     <li>
-      <NavLink to="/" className="btn btn-floating pink lighten-1">HU</NavLink>
+      <NavLink to="/" className="btn btn-floating pink lighten-1">
+        {profile.initials}
+      </NavLink>
     </li>
   </>
 );

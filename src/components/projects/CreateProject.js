@@ -25,7 +25,6 @@ class CreateProject extends React.Component {
 
   render() {
     const { auth } = this.props;
-    console.log(auth.uid);
     if (auth.isLoaded && !auth.uid) return <Redirect to="/signin" />;
     const { title, content } = this.state;
     return (

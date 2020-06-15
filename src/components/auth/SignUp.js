@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { signUp } from '../../actions';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -21,14 +22,15 @@ class SignUp extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    const { signUp } = this.props;
+    signUp(this.state);
   }
 
   render() {
     const {
       firstName, lastName, email, password, repeat,
     } = this.state;
-    const { auth } = this.props;
+    const { auth, authError } = this.props;
     if (auth.isLoaded && auth.uid) return <Redirect to="/" />;
     return (
       <div className="row">
@@ -93,7 +95,12 @@ class SignUp extends React.Component {
               <label htmlFor="repeat">Repeat Password</label>
             </div>
           </div>
-          <button type="submit" className="waves-effect waves-light btn">Create</button>
+          <div className="red-text center">
+            { authError ? <p>{authError}</p> : null }
+          </div>
+          <button type="submit" className="waves-effect waves-light btn">
+            Sign Up
+          </button>
         </form>
       </div>
     );
@@ -102,6 +109,7 @@ class SignUp extends React.Component {
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
+  authError: state.auth.authError,
 });
 
-export default connect(mapStateToProps)(SignUp);
+export default connect(mapStateToProps, { signUp })(SignUp);
