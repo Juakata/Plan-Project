@@ -25,7 +25,6 @@ class SignIn extends React.Component {
   render() {
     const { email, password } = this.state;
     const { authError } = this.props;
-    console.log(authError);
     return (
       <div className="row">
         <form className="col s12" onSubmit={this.handleSubmit}>
@@ -67,6 +66,6 @@ class SignIn extends React.Component {
 
 const mapStateToProps = state => ({
   authError: state.auth.authError,
-})
+});
 
 export default connect(mapStateToProps, { signIn })(SignIn);
