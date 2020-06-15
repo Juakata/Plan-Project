@@ -9,7 +9,7 @@ const ProjectList = ({projects}) => {
         <Link to={`/projects/${project.id}`} key={project.id}>
           <ProjectSummary
             title={project.title}
-            author="Andoni"
+            author={`${project.authorFirstName} ${project.authorLastName}`}
             time="3rd September, 2am"
           />
         </Link>

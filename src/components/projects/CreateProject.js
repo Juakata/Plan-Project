@@ -19,8 +19,9 @@ class CreateProject extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { createProject } = this.props;
+    const { createProject, history } = this.props;
     createProject(this.state);
+    history.push('/');
   }
 
   render() {
