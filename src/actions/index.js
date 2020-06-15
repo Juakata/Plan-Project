@@ -1,5 +1,5 @@
 export const createProject = project => (dispatch, getState, extra) => {
-  const { getFirestore, getFirebase } = extra;
+  const { getFirestore } = extra;
   getFirestore().collection('projects').add({
     ...project,
     authorFirstName: 'Andoni',
@@ -9,4 +9,13 @@ export const createProject = project => (dispatch, getState, extra) => {
   }).then(() => dispatch({ type: 'CREATE_PROJECT', project }))
   .catch(err => dispatch({ type: 'CREATE_PROJECT_ERROR', err }))
 
+}
+
+export const signIn = credentials => (dispatch, getState, { getFirebase }) => {
+  getFirebase().auth().signInWithEmailAndPassword(
+    credentials.email,
+    credentials.password,
+  )
+  .then(() => dispatch({ type: 'LOGIN_SUCCESS' }))
+  .catch( err => dispatch({ type: 'LOGIN_ERROR', err }));
 }
