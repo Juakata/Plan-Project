@@ -6,7 +6,6 @@ import ProjectList from '../projects/ProjectList';
 
 const Dashboard = ({ projects }) => (
   <div>
-    {console.log(projects)}
     <ProjectList projects={projects}/>
   </div>
 );
