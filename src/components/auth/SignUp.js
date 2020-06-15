@@ -1,4 +1,6 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -26,6 +28,8 @@ class SignUp extends React.Component {
     const {
       firstName, lastName, email, password, repeat,
     } = this.state;
+    const { auth } = this.props;
+    if (auth.isLoaded && auth.uid) return <Redirect to="/" />;
     return (
       <div className="row">
         <form autoComplete="off" className="col s12" onSubmit={this.handleSubmit}>
@@ -96,4 +100,8 @@ class SignUp extends React.Component {
   };
 }
 
-export default SignUp;
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+});
+
+export default connect(mapStateToProps)(SignUp);
