@@ -29,7 +29,7 @@ exports.newUserJoin = functions.firestore.document('users/{userID}').onCreate((s
     const displayName = `${user.firstName} ${user.lastName}`;
 
     const noftification = {
-        content: 'New user join our project',
+        content: 'Joined the party',
         user: displayName ,
         time: admin.firestore.FieldValue.serverTimestamp()
     }

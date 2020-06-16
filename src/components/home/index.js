@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Notifications from './Notifications';
 
-const Home = ({ auth }) => {
+const Home = ({ auth, notifications }) => {
   if (auth.isLoaded && !auth.uid) return <Redirect to="/signin" />;
   return (
     <div className="dashboard">
@@ -13,7 +15,7 @@ const Home = ({ auth }) => {
           <Dashboard />
         </div>
         <div className="col s12 m5 offset-m1">
-          <Notifications />
+          <Notifications notifications={notifications}/>
         </div>
       </div>
     </div>
@@ -22,6 +24,12 @@ const Home = ({ auth }) => {
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth,
+  notifications: state.firestore.ordered.notifications,
 });
 
-export default connect(mapStateToProps)(Home);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'notifications' },
+  ]),
+)(Home);
