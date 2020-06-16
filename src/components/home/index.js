@@ -30,6 +30,6 @@ const mapStateToProps = state => ({
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'notifications' },
+    { collection: 'notifications', limit: 4, orderBy: ['time', 'desc'] },
   ]),
 )(Home);
